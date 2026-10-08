@@ -6,7 +6,6 @@ import { base44 } from '@/api/base44Client';
 import { Button } from '@/components/ui/button';
 import { NewsLead, NewsTile, NewsRow } from '@/components/app/NewsCards';
 import LunarCalendar from '@/components/app/LunarCalendar';
-import SideSuggestions from '@/components/social/SideSuggestions';
 import { CATEGORIES, pageOpts, flat } from '@/lib/pgds';
 
 const nav = (on) => `shrink-0 border-b-2 px-4 py-3 text-[13px] font-bold uppercase tracking-wide ${on ? 'border-[#C9A227] text-[#8A6D0B] dark:text-[#C9A227]' : 'border-transparent text-muted-foreground hover:text-foreground'}`;
@@ -61,7 +60,7 @@ export default function News() {
           {grid.length > 0 && <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">{grid.map((a) => <NewsTile key={a.id} a={a} />)}</div>}
           {q.hasNextPage && <Button variant="outline" className="mt-8 w-full rounded-full" disabled={q.isFetchingNextPage} onClick={() => q.fetchNextPage()}>Xem thêm tin</Button>}
         </div>
-        <aside className="space-y-6"><LunarCalendar /><SideSuggestions /></aside>
+        <aside className="space-y-6"><LunarCalendar /></aside>
       </div>
     </div>
   );

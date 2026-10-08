@@ -21,11 +21,6 @@ export default function Account() {
       <div className="space-y-5 px-5 pt-4">
         <ProfileCard key={me?.id || 'guest'} me={me} />
         {me && (
-          <Link to="/ban-be" className="flex items-center gap-3 rounded-3xl border bg-card px-5 py-4 text-sm">
-            <Users className="h-4 w-4 text-[#8A6D0B] dark:text-[#C9A227]" /><span className="flex-1">Bạn bè & người theo dõi</span><ChevronRight className="h-4 w-4 text-muted-foreground" />
-          </Link>
-        )}
-        {me && (
           <div className="overflow-hidden rounded-3xl border bg-card">
             <Link to="/cong-tac-vien" className="flex items-center gap-3 border-b px-5 py-4 text-sm last:border-0"><span className="flex-1">{canWrite(me) ? 'Trang cộng tác viên' : 'Bài đăng của tôi'}</span><ChevronRight className="h-4 w-4 text-muted-foreground" /></Link>
             {isEditor(me) && <Link to="/bien-tap" className="flex items-center gap-3 border-b px-5 py-4 text-sm last:border-0"><span className="flex-1">Trang biên tập viên</span><ChevronRight className="h-4 w-4 text-muted-foreground" /></Link>}

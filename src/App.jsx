@@ -7,7 +7,6 @@ import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 import ScrollToTop from './components/ScrollToTop';
 import WebShell from '@/components/web/WebShell';
-import Messages from '@/pages/Messages';
 import Home from '@/pages/Home';
 import News from '@/pages/News';
 import ArticleDetail from '@/pages/ArticleDetail';
@@ -19,7 +18,6 @@ import Notifications from '@/pages/Notifications';
 import Account from '@/pages/Account';
 import Legal from '@/pages/Legal';
 import MemberProfile from '@/pages/MemberProfile';
-import Friends from '@/pages/Friends';
 import Admin from '@/pages/Admin';
 import Editor from '@/pages/Editor';
 import Collaborator from '@/pages/Collaborator';
@@ -55,7 +53,6 @@ const AuthenticatedApp = () => {
   return (
     <Routes>
       <Route element={<WebShell />}>
-        <Route path="/tin-nhan" element={<Messages />} />
         <Route path="/" element={<Home />} />
         <Route path="/tin-tuc" element={<News />} />
         <Route path="/bai/:id" element={<ArticleDetail />} />
@@ -67,7 +64,6 @@ const AuthenticatedApp = () => {
         <Route path="/tai-khoan" element={<Account />} />
         <Route path="/dieu-khoan" element={<Legal />} />
         <Route path="/thanh-vien/:email" element={<MemberProfile />} />
-        <Route path="/ban-be" element={<Friends />} />
       </Route>
       <Route path="/admin" element={<Admin />} />
       <Route path="/bien-tap" element={<Editor />} />

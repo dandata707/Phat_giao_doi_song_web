@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { base44 } from '@/api/base44Client';
 import { Button } from '@/components/ui/button';
-import Composer from '@/components/app/Composer';
 import ActivityCard from '@/components/app/ActivityCard';
 import { useMe, pageOpts, flat, getBlocked } from '@/lib/pgds';
 
@@ -27,7 +26,6 @@ export default function Feed({ groupId, canPost = true }) {
 
   return (
     <div className="space-y-4">
-      {canPost && <Composer groupId={groupId} />}
       <div className="flex gap-2">
         {FILTERS.map((f) => (
           <button key={f.v} onClick={() => setKind(f.v)}

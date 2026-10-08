@@ -24,16 +24,6 @@ export const MENU = [
     ],
   },
   {
-    label: 'Bạn bè', to: '/ban-be',
-    children: [
-      { label: 'Danh sách bạn bè', to: '/ban-be?tab=friends' },
-      { label: 'Lời mời kết bạn', to: '/ban-be?tab=requests' },
-      { label: 'Gợi ý bạn bè', to: '/ban-be?tab=suggest' },
-      { label: 'Nhóm có thể tham gia', to: '/ban-be?tab=groups' },
-    ],
-  },
-  { label: 'Tin nhắn', to: '/tin-nhan' },
-  {
     label: 'Thông tin', to: '/dieu-khoan',
     children: [
       { label: 'Điều khoản & chính sách', to: '/dieu-khoan' },

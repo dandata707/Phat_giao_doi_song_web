@@ -8,7 +8,7 @@ import AccountGate from '@/components/app/AccountGate';
 import { getPref } from '@/lib/pgds';
 
 const SIZES = { s: '15px', m: '16px', l: '18px' };
-const WIDE = ['/', '/tin-tuc', '/cong-dong', '/tin-nhan'];
+const WIDE = ['/', '/tin-tuc', '/cong-dong'];
 
 export default function WebShell() {
   const { pathname } = useLocation();
@@ -29,7 +29,7 @@ export default function WebShell() {
       <AccountGate />
       <TopNav />
       <main className={WIDE.includes(pathname) ? '' : 'mx-auto max-w-4xl'}><Outlet /></main>
-      {pathname !== '/tin-nhan' && <Footer />}
+      <Footer />
     </div>
   );
 }

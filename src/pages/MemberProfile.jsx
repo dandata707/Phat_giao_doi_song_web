@@ -6,7 +6,6 @@ import { base44 } from '@/api/base44Client';
 import PageHeader from '@/components/app/PageHeader';
 import ActivityCard from '@/components/app/ActivityCard';
 import ProfileHeader from '@/components/social/ProfileHeader';
-import RelationButtons from '@/components/social/RelationButtons';
 import { useMe } from '@/lib/pgds';
 import { useProfile, useRelation, useStats } from '@/lib/social';
 
@@ -38,7 +37,7 @@ export default function MemberProfile() {
       <ProfileHeader name={name} profile={profile} stats={stats} canView={canView} joined={own ? me.created_date : profile?.created_date}>
         {own
           ? <Link to="/tai-khoan" className="inline-block rounded-full border px-4 py-2 text-sm font-medium">Chỉnh sửa hồ sơ</Link>
-          : <RelationButtons email={email} name={name} />}
+          : null}
       </ProfileHeader>
       <div className="space-y-4 px-5 py-5">
         {!canView && <p className="flex items-center justify-center gap-2 py-8 text-sm text-muted-foreground"><Lock className="h-4 w-4" />Hồ sơ này không được hiển thị với bạn.</p>}

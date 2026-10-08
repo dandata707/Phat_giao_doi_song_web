@@ -48,3 +48,26 @@ export const saveProfile = (me, profile, patch) =>
     : E.Profile.create({ user_email: me.email, display_name: me.display_name || me.full_name || me.email.split('@')[0], ...patch });
 
 export const nameOf = (me) => me.display_name || me.full_name || me.email.split('@')[0];
+
+export const useSuggestedPeople = (me, enabled = true, limit = 10) => useQuery({
+  queryKey: ['social', 'suggest', me.email, limit],
+  enabled,
+  queryFn: async () => {
+    const [fr, bl] = await Promise.all([
+      E.Friendship.filter({ $or: [{ requester_email: me.email }, { recipient_email: me.email }] }, { limit: 200 }),
+      E.Block.filter({ $or: [{ blocker_email: me.email }, { blocked_email: me.email }] }, { limit: 200 }),
+    ]);
+    const skip = new Set([me.email]);
+    fr.items.forEach((f) => { skip.add(f.requester_email); skip.add(f.recipient_email); });
+    bl.items.forEach((b) => { skip.add(b.blocker_email); skip.add(b.blocked_email); });
+    return (await E.Profile.filter({ user_email: { $nin: [...skip] }, hide_suggestions: { $ne: true }, who_friend_request: { $ne: 'none' } }, { sort: '-created_date', limit })).items;
+  },
+});
+
+export const useSuggestedGroups = (me, limit = 6) => useQuery({
+  queryKey: ['group-suggest', me.email, limit],
+  queryFn: async () => {
+    const mine = (await E.GroupMember.filter({ user_email: me.email }, { limit: 200 })).items.map((m) => m.group_id);
+    return (await E.Group.filter({ group_type: 'public', id: { $nin: mine } }, { sort: '-member_count', limit })).items;
+  },
+});

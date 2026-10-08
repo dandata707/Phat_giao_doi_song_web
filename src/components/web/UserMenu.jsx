@@ -11,13 +11,13 @@ const itemCls = 'block rounded-lg px-3 py-2 text-sm hover:bg-[#C9A227]/20';
 export default function UserMenu() {
   const { data: me, isLoading } = useMe();
   if (isLoading) return null;
-  if (!me) return <Button onClick={goLogin} className="rounded-full bg-[#C9A227] text-[#2b2108] hover:bg-[#b8921f]">Đăng nhập</Button>;
+  if (!me) return <Button onClick={goLogin} size="sm" className="rounded-full bg-[#C9A227] text-[#2b2108] hover:bg-[#b8921f]">Đăng nhập</Button>;
   const staff = ['editor', 'admin'].includes(me.role);
   return (
     <div className="group relative">
-      <Link to="/tai-khoan" className="flex items-center gap-2 rounded-full py-1 pl-1 pr-3 hover:bg-muted">
+      <Link to="/tai-khoan" className="flex items-center gap-2 rounded-full py-1 pl-1 pr-1 hover:bg-muted md:pr-3">
         <UserAvatar name={nameOf(me)} className="h-9 w-9" />
-        <span className="max-w-[140px] truncate text-sm font-medium">{nameOf(me)}</span>
+        <span className="hidden max-w-[140px] truncate text-sm font-medium md:inline">{nameOf(me)}</span>
       </Link>
       <div className="invisible absolute right-0 top-full z-50 pt-1 opacity-0 transition-all duration-150 group-hover:visible group-hover:opacity-100">
         <div className="min-w-[220px] rounded-xl border bg-card p-2 shadow-xl">

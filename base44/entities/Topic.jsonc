@@ -1,0 +1,61 @@
+{
+  "name": "Topic",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "body": {
+      "type": "string"
+    },
+    "forum": {
+      "type": "string",
+      "enum": [
+        "public",
+        "members"
+      ],
+      "default": "public"
+    },
+    "flair": {
+      "type": "string",
+      "description": "Nh\u00e3n ch\u1ee7 \u0111\u1ec1, v\u00ed d\u1ee5: H\u1ecfi \u0111\u00e1p, Chia s\u1ebb, Th\u1ea3o lu\u1eadn"
+    },
+    "author_name": {
+      "type": "string"
+    },
+    "author_email": {
+      "type": "string"
+    },
+    "reply_count": {
+      "type": "number",
+      "default": 0
+    },
+    "member_count": {
+      "type": "number",
+      "default": 1
+    },
+    "last_replier": {
+      "type": "string"
+    },
+    "upvoted_by": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "downvoted_by": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "score": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "title",
+    "forum"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "name": "Report",
+  "type": "object",
+  "properties": {
+    "target_type": {
+      "type": "string"
+    },
+    "target_id": {
+      "type": "string"
+    },
+    "reason": {
+      "type": "string"
+    },
+    "note": {
+      "type": "string"
+    },
+    "reporter_email": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "reviewed",
+        "resolved"
+      ],
+      "default": "pending"
+    },
+    "resolution": {
+      "type": "string",
+      "description": "H\u01b0\u1edbng x\u1eed l\u00fd: removed = \u0111\u00e3 g\u1ee1 n\u1ed9i dung; dismissed = b\u00e3i b\u1ecf b\u00e1o c\u00e1o"
+    }
+  },
+  "required": [
+    "target_type",
+    "target_id",
+    "reason"
+  ]
+}

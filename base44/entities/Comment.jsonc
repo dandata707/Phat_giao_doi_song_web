@@ -1,0 +1,40 @@
+{
+  "name": "Comment",
+  "type": "object",
+  "properties": {
+    "target_type": {
+      "type": "string",
+      "enum": [
+        "article",
+        "activity",
+        "topic"
+      ]
+    },
+    "target_id": {
+      "type": "string"
+    },
+    "content": {
+      "type": "string"
+    },
+    "author_name": {
+      "type": "string"
+    },
+    "author_email": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "approved",
+        "rejected"
+      ],
+      "description": "pending = ch\u1edd bi\u00ean t\u1eadp vi\u00ean duy\u1ec7t; rejected = b\u1ecb t\u1eeb ch\u1ed1i/g\u1ee1; tr\u1ed1ng ho\u1eb7c approved = hi\u1ec3n th\u1ecb"
+    }
+  },
+  "required": [
+    "target_type",
+    "target_id",
+    "content"
+  ]
+}

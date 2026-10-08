@@ -1,0 +1,65 @@
+{
+  "name": "Activity",
+  "type": "object",
+  "properties": {
+    "content": {
+      "type": "string"
+    },
+    "image_url": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "update",
+        "article"
+      ],
+      "default": "update"
+    },
+    "article_id": {
+      "type": "string"
+    },
+    "privacy": {
+      "type": "string",
+      "enum": [
+        "public",
+        "members",
+        "friends",
+        "me"
+      ],
+      "default": "public"
+    },
+    "group_id": {
+      "type": "string"
+    },
+    "author_name": {
+      "type": "string"
+    },
+    "author_email": {
+      "type": "string"
+    },
+    "liked_by": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "approved",
+        "rejected",
+        "removed",
+        "hidden"
+      ],
+      "description": "pending = ch\u1edd duy\u1ec7t; rejected = kh\u00f4ng duy\u1ec7t; removed/hidden = \u0111\u00e3 g\u1ee1/\u1ea9n; tr\u1ed1ng ho\u1eb7c approved = hi\u1ec3n th\u1ecb"
+    },
+    "reject_reason": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "content"
+  ]
+}

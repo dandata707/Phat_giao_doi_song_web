@@ -1,0 +1,36 @@
+{
+  "name": "Notification",
+  "type": "object",
+  "properties": {
+    "recipient_email": {
+      "type": "string",
+      "description": "User email, or 'all' for broadcast"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "breaking",
+        "new_post",
+        "comment",
+        "like",
+        "mention",
+        "friend",
+        "message"
+      ],
+      "default": "breaking"
+    },
+    "title": {
+      "type": "string"
+    },
+    "body": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "title",
+    "recipient_email"
+  ]
+}

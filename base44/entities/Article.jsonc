@@ -1,0 +1,75 @@
+{
+  "name": "Article",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "excerpt": {
+      "type": "string"
+    },
+    "content": {
+      "type": "string",
+      "description": "Paragraphs separated by blank lines; lines starting with '## ' are headings"
+    },
+    "cover_image": {
+      "type": "string"
+    },
+    "images": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "category": {
+      "type": "string"
+    },
+    "subcategory": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "author_name": {
+      "type": "string"
+    },
+    "author_email": {
+      "type": "string"
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false
+    },
+    "liked_by": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "event_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Ng\u00e0y di\u1ec5n ra s\u1ef1 ki\u1ec7n Ph\u1eadt gi\u00e1o (d\u01b0\u01a1ng l\u1ecbch). B\u00e0i c\u00f3 ng\u00e0y n\u00e0y s\u1ebd hi\u1ec7n \u1edf m\u1ee5c S\u1ef1 ki\u1ec7n Ph\u1eadt gi\u00e1o tr\u00ean Trang ch\u1ee7"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "approved",
+        "rejected",
+        "removed"
+      ],
+      "description": "pending = ch\u1edd bi\u00ean t\u1eadp vi\u00ean duy\u1ec7t; rejected = kh\u00f4ng duy\u1ec7t, c\u1ea7n l\u00e0m l\u1ea1i; removed = \u0111\u00e3 g\u1ee1; tr\u1ed1ng ho\u1eb7c approved = \u0111ang hi\u1ec3n th\u1ecb"
+    },
+    "reject_reason": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "title",
+    "category"
+  ]
+}

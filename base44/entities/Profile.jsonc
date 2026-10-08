@@ -1,0 +1,83 @@
+{
+  "name": "Profile",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string"
+    },
+    "display_name": {
+      "type": "string"
+    },
+    "bio": {
+      "type": "string"
+    },
+    "avatar": {
+      "type": "string"
+    },
+    "cover": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "interests": {
+      "type": "string"
+    },
+    "who_view": {
+      "type": "string",
+      "enum": [
+        "public",
+        "members",
+        "friends",
+        "me"
+      ],
+      "default": "public"
+    },
+    "who_friend_request": {
+      "type": "string",
+      "enum": [
+        "everyone",
+        "none"
+      ],
+      "default": "everyone"
+    },
+    "who_message": {
+      "type": "string",
+      "enum": [
+        "everyone",
+        "friends",
+        "none"
+      ],
+      "default": "everyone"
+    },
+    "who_comment": {
+      "type": "string",
+      "enum": [
+        "everyone",
+        "friends",
+        "me"
+      ],
+      "default": "everyone"
+    },
+    "hide_suggestions": {
+      "type": "boolean",
+      "default": false
+    },
+    "account_status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "suspended",
+        "locked"
+      ],
+      "default": "active",
+      "description": "active = b\u00ecnh th\u01b0\u1eddng; suspended = \u0111\u00ecnh ch\u1ec9 (kh\u00f4ng \u0111\u0103ng/b\u00ecnh lu\u1eadn); locked = kh\u00f3a (kh\u00f4ng d\u00f9ng \u0111\u01b0\u1ee3c app)"
+    },
+    "status_reason": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "user_email"
+  ]
+}

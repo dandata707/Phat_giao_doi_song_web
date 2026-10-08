@@ -6,7 +6,8 @@ import PageNotFound from './lib/PageNotFound';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 import ScrollToTop from './components/ScrollToTop';
-import MobileShell from '@/components/app/MobileShell';
+import WebShell from '@/components/web/WebShell';
+import Messages from '@/pages/Messages';
 import Home from '@/pages/Home';
 import News from '@/pages/News';
 import ArticleDetail from '@/pages/ArticleDetail';
@@ -53,7 +54,8 @@ const AuthenticatedApp = () => {
   // Render the main app
   return (
     <Routes>
-      <Route element={<MobileShell />}>
+      <Route element={<WebShell />}>
+        <Route path="/tin-nhan" element={<Messages />} />
         <Route path="/" element={<Home />} />
         <Route path="/tin-tuc" element={<News />} />
         <Route path="/bai/:id" element={<ArticleDetail />} />

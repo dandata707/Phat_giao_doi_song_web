@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { LayoutDashboard, Newspaper, MessageSquare, MessagesSquare, Flag, Users, ArrowLeft } from 'lucide-react';
+import { LayoutDashboard, Newspaper, MessageSquare, MessagesSquare, Flag, Users, ArrowLeft, MessageCircle, UsersRound, Images, UserPlus, Mail } from 'lucide-react';
+import { base44 } from '@/api/base44Client';
+import EntityAdmin from '@/components/admin/EntityAdmin';
 import { Button } from '@/components/ui/button';
 import Dashboard from '@/components/admin/Dashboard';
 import ArticlesAdmin from '@/components/admin/ArticlesAdmin';
@@ -12,8 +14,18 @@ import { useMe, goLogin, LOGO_URL } from '@/lib/pgds';
 
 const TABS = [
   ['dash', 'Tổng quan', LayoutDashboard], ['articles', 'Tin tức', Newspaper], ['posts', 'Bài đăng', MessageSquare],
-  ['comments', 'Bình luận', MessagesSquare], ['reports', 'Báo cáo', Flag], ['users', 'Tài khoản', Users],
+  ['comments', 'Bình luận', MessagesSquare], ['topics', 'Diễn đàn', MessageCircle], ['groups', 'Nhóm', UsersRound],
+  ['albums', 'Thư viện ảnh', Images], ['friends', 'Bạn bè', UserPlus], ['messages', 'Tin nhắn', Mail],
+  ['reports', 'Báo cáo', Flag], ['users', 'Tài khoản', Users],
 ];
+const E = base44.entities;
+const SECTIONS = {
+  topics: { entity: 'Topic', title: (r) => r.title, sub: (r) => `${r.author_name || ''} · ${r.forum === 'members' ? 'Thành viên' : 'Công khai'} · ${r.reply_count || 0} trả lời` },
+  groups: { entity: 'Group', title: (r) => r.name, sub: (r) => `${r.group_type === 'private' ? 'Riêng tư' : 'Công khai'} · ${r.member_count || 0} thành viên · ${r.description || ''}`, confirmText: 'Xóa nhóm này cùng toàn bộ thành viên?', onDeleted: (r) => E.GroupMember.deleteMany({ group_id: r.id }) },
+  albums: { entity: 'Album', title: (r) => r.title, sub: (r) => `${r.photos?.length || 0} ảnh · ${r.author_name || ''}` },
+  friends: { entity: 'Friendship', title: (r) => `${r.requester_name || r.requester_email} → ${r.recipient_name || r.recipient_email}`, sub: (r) => (r.status === 'accepted' ? 'Đã là bạn bè' : 'Đang chờ chấp nhận') },
+  messages: { entity: 'Message', title: (r) => `${r.sender_name || r.sender_email} → ${r.recipient_name || r.recipient_email}`, sub: (r) => r.content },
+};
 
 export default function Admin() {
   const { data: me, isLoading } = useMe();
@@ -42,6 +54,7 @@ export default function Admin() {
         {tab === 'articles' && <ArticlesAdmin />}
         {tab === 'posts' && <PostsAdmin />}
         {tab === 'comments' && <CommentsAdmin />}
+        {SECTIONS[tab] && <EntityAdmin key={tab} {...SECTIONS[tab]} />}
         {tab === 'reports' && <ReportsAdmin onOpenUser={(e) => { setUserSearch(e); setTab('users'); }} />}
         {tab === 'users' && <UsersAdmin key={userSearch} initialSearch={userSearch} />}
       </main>

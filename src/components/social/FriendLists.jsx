@@ -1,5 +1,6 @@
 import React from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { Link } from 'react-router-dom';
 import { base44 } from '@/api/base44Client';
 import { Button } from '@/components/ui/button';
 import PersonRow from '@/components/social/PersonRow';
@@ -23,6 +24,7 @@ export function FriendList({ me }) {
     const mine = f.requester_email === me;
     return (
       <PersonRow key={f.id} email={mine ? f.recipient_email : f.requester_email} name={mine ? f.recipient_name : f.requester_name}>
+        <Link to={`/tin-nhan?with=${encodeURIComponent(mine ? f.recipient_email : f.requester_email)}`} className="rounded-full bg-[#C9A227] px-3 py-1.5 text-xs font-medium text-[#2b2108]">Nhắn tin</Link>
         <Button size="sm" variant="outline" className="rounded-full" onClick={act(() => E.Friendship.delete(f.id))}>Hủy kết bạn</Button>
       </PersonRow>
     );
